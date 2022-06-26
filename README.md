@@ -1,1 +1,1 @@
-# Project-1-Blogging-Site-Mini-Project-Requirement
+# Project-1-Blogging-Site-Mini-Project
