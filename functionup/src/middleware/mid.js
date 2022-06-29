@@ -10,7 +10,7 @@ const Authentication = async (req, res, next) => {
     try {
         let token = req.headers["x-api-key"];
         if (!token) { return res.status(401).send({ status: false, message: "Missing authentication token in required" }); }
-        if(token.length!=215){ return res.status(400).send({ status: false, message: "Token is not in right format" }); }
+        if(token.length!=215){ return res.status(400).send({ status: false, message: "Token is not in the right format" }); }
         const decodedToken = jwt.verify(token, "functionup-project-1")
         if (!decodedToken) return res.status(403).send({ status: false, message: "Invalid authentication token" });
         req.authorIdnew = decodedToken.AuthorId
@@ -29,6 +29,7 @@ const Authentication = async (req, res, next) => {
 const Authorisation = async (req, res, next) => {
     try {
         let authorLoggedIn = req.authorIdnew
+        
         let authoridBody = req.body.authorId
         let authoridQuery = req.query.authorId
         let blogId = req.params.blogId

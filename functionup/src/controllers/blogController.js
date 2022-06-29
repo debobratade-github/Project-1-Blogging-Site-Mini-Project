@@ -13,7 +13,6 @@ const isValidBody = function (y) {
 const createBlog = async function (req, res) {
     try {
         let data = req.body
-        console.log(data)
         if(data.isPublished==true){data[`publishedAt`] = new Date()}
         let create = await blogModel.create(data)
         return res.status(201).send({ status: true, data: create })

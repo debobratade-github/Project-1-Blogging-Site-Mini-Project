@@ -29,7 +29,7 @@ const loginAuthor = async function (req, res) {
   let password = req.body.password;
 
   let Author = await AuthorModel.findOne({ email: email, password: password });
-  if (!Author) return res.status(404).send({ status: false, msg: "Email-Id or the password is not exist" });
+  if (!Author) return res.status(400).send({ status: false, msg: "Email-Id or the password is not exist" });
 
   let token = jwt.sign(
     {

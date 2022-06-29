@@ -2,6 +2,9 @@
 
 Repository for backend cohort - Radon
 
+# Video Explanation of the solution code: 
+https://drive.google.com/drive/folders/1M7qTzEd1kc_DaKcX96P1qmgWL6P65vsL?usp=sharing
+
 ## Blogging Site Mini Project Requirement
 
 ## Phase I

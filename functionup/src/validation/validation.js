@@ -17,33 +17,33 @@ const isValidObjectId = function (x) {
 const createAuthMid = async function (req, res, next) {
     try {
         let title = req.body.title
-        if (typeof (title) != 'string' || !title) return res.status(404).send({ msg: " title is required " })
+        if (typeof (title) != 'string' || !title) return res.status(400).send({ msg: " title is required " })
         if (title == "Mr" || title == "Mrs" || title == "Miss") { title = title }
         else
             return res.status(400).send({ msg: "title must be Mr/Mrs/Miss" })
 
 
         let firstName = req.body.fname
-        if (typeof (firstName) != 'string' || !firstName) return res.status(404).send({ msg: "first Name is required " })
+        if (typeof (firstName) != 'string' || !firstName) return res.status(400).send({ msg: "first Name is required " })
         if (!firstName.match(userCheck)) return res.status(400).send({ msg: "first Name is not valid " })
 
         let lastName = req.body.lname
-        if (typeof (lastName) != 'string' || !lastName) return res.status(404).send({ msg: "last Name is required " })
+        if (typeof (lastName) != 'string' || !lastName) return res.status(400).send({ msg: "last Name is required " })
         if (!lastName.match(userCheck)) return res.status(400).send({ msg: "last Name is not valid " })
 
         let data = req.body;
 
         let email = req.body.email
-        if (typeof (email) != 'string' || !email) return res.status(403).send({ msg: "email is required" })
+        if (typeof (email) != 'string' || !email) return res.status(400).send({ msg: "email is required" })
         if (!email.match(mailRegex)) return res.status(400).send({ msg: "email is not valid" })
 
         let password = req.body.password
-        if (typeof (password) != 'string' || !password) return res.status(403).send({ msg: "password is required" })
+        if (typeof (password) != 'string' || !password) return res.status(400).send({ msg: "password is required" })
        if (!password.match(validPassword)) return res.status(400).send({ msg: "Password is not valid. Must be contain 1 UpperCase alphabet and minimum 8 elements and not allowed special character" })
 
 
         const autherMail = await AuthorModel.findOne({ email: data.email }); //email exist or not
-        if (autherMail) { return res.status(404).send({ status: false, msg: "Email already exist" }); }
+        if (autherMail) { return res.status(400).send({ status: false, msg: "Email already exist" }); }
 
         next()
         
